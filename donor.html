@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MealMitra Donor Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f4f8fb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .header {
+      background: #28a745;
+      padding: 40px 30px;
+      border-radius: 15px;
+      color: white;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .dashboard {
+      background: white;
+      margin-top: 30px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .rank-badge {
+      background: #ffd700;
+      color: #333;
+      display: inline-block;
+      padding: 12px 24px;
+      font-weight: bold;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #28a745;
+    }
+
+    .steps, .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 1 1 200px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 5px solid #28a745;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #e8f5e9;
+    }
+
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .btn {
+      background: #28a745;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #218838;
+    }
+
+    @media(max-width: 768px) {
+      .card, .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>Welcome to MealMitra, Donor!</h1>
+      <p>Your generosity helps feed lives & reduce food waste. Let’s make an impact together.</p>
+    </div>
+
+    <div class="dashboard">
+
+      <div class="rank-badge">Gold Donor - 320 Points</div>
+
+      <div class="section">
+        <h2>How to Donate?</h2>
+        <div class="steps">
+          <div class="card">📍 <strong>Step 1:</strong> Add your location & food details</div>
+          <div class="card">🔍 <strong>Step 2:</strong> Nearest NGO is auto-matched</div>
+          <div class="card">🚚 <strong>Step 3:</strong> NGO collects the surplus food</div>
+          <div class="card">❤ <strong>Step 4:</strong> Food reaches the needy</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Donor Benefits</h2>
+        <div class="benefits">
+          <div class="card">🏆 Earn MealMitra Points</div>
+          <div class="card">📜 Certificate of Contribution</div>
+          <div class="card">🧑‍💻 Recognition on Donor Wall</div>
+          <div class="card">🎁 Special Rewards & Badges</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a href="https://skroyweb.github.io/Tivra/dnrdnt.html" class="btn" >Donate Now</a>
+        <a href="#" class="btn">Track My Donations</a>
+        <a href="#" class="btn">Leaderboard</a>
+        <a href="#" class="btn">Invite Others</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
