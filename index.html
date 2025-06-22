@@ -7,59 +7,70 @@
   <title>Mr. Tꍟʐ - SkroyTivra</title>
   <script>
     let users = {};
-
-    function send(action, payload) {
-      return fetch("https://skr-backend.onrender.com/api", {
+    const backendURL = "https://skr-backend.onrender.com";
+    async function send(action, payload) {
+      const res = await fetch(backendURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action, ...payload })
-      })
-      .then(res => res.json())
-      .then(data => {
-        users = data;
-        return users;
-      })
-      .catch(err => {
-        console.error("Error fetching data:", err);
-        alert("Error fetching user data");
       });
+      const data = await res.json();
+      users = data;
     }
+  </script>
 
+  <script>
     const params = new URLSearchParams(window.location.search);
     const userId = params.get("user");
 
-    if (!userId) {
-      alert("User ID not found in URL");
-    } else {
-      send("get_profile", { userId }).then(() => {
-        const u = users[userId];
+    async function main() {
+      await send("get_profile", { userId });
 
-        if (!u) {
-          alert("User not found");
-          return;
-        }
+      u = users[userId];
+      profilepic = localStorage.getItem("profilePicUrl");
+      if (profilepic) {
 
-        let profilepic = localStorage.getItem("profilePicUrl") || u.profilePicSrc;
-        let bannerpic = localStorage.getItem("bannerPicUrl") || u.bannerPicSrc;
-        let userName = localStorage.getItem("userNameUrl") || u.username;
-        let userMark = localStorage.getItem("userMarkUrl") || u.usermark;
+      } else {
+        profilepic = `${u.profilePicSrc}`;
+      }
 
-        let flamnt = u.followersamnt;
-        let clamnt = u.contAmnt;
-        let UserDescript = u.userDescription;
-        let xlinkImg = u.xlinkimg;
-        let instalinkImg = u.instalinkimg;
-        let fblinkImg = u.fblinkimg;
-        let addlinkImg = u.addlinkimg;
-        let xlink = u.xlink;
-        let instalink = u.instalink;
-        let fblink = u.fblink;
-        let addlink = u.addlink;
+      bannerpic = localStorage.getItem("bannerPicUrl");
+      if (bannerpic) {
 
-        let momentcont = u.posts[0];
-        let rollcont = u.posts[1];
-      });
+      } else {
+        bannerpic = `${u.bannerPicSrc}`;
+      }
+
+      userName = localStorage.getItem("userNameUrl");
+      if (userName) {
+
+      } else {
+        userName = `${u.username}`;
+      }
+
+      userMark = localStorage.getItem("userMarkUrl");
+      if (userMark) {
+
+      } else {
+        userMark = `${u.usermark}`;
+      }
+
+      flamnt = `${u.followersamnt}`;
+      clamnt = `${u.contAmnt}`;
+      UserDescript = `${u.userDescription}`;
+      xlinkImg = `${u.xlinkimg}`;
+      instalinkImg = `${u.instalinkimg}`;
+      fblinkImg = `${u.fblinkimg}`;
+      addlinkImg = `${u.addlinkimg}`;
+      xlink = `${u.xlink}`;
+      instalink = `${u.instalink}`;
+      fblink = `${u.fblink}`;
+      addlink = `${u.addlink}`;
+      momentcont = u.posts[0];
+      rollcont = u.posts[1];
     }
+
+    main();
   </script>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
