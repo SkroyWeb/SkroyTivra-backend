@@ -50,7 +50,8 @@
       })
       .then(res => res.json())
       .then(data => {
-        document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+        user=data;
+        console.log(user)
       })
       .catch(err => {
         document.getElementById("result").innerText = "Error: " + err;
