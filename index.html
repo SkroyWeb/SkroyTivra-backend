@@ -38,13 +38,18 @@
       .then(res => res.json())
       .then(data => {
         const user=data;
-        console.log(user)
+        console.log(user);
       })
       .catch(err => {
         document.getElementById("result").innerText = "Error: " + err;
       });
     }
     send("get_profile", { username: "Spare" });
+    if("Spare" in user){
+      console.log("true");
+    } else{
+      console.log("false");
+    }
   </script>
 </head>
 <body>
