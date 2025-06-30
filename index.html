@@ -28,29 +28,34 @@
     }
   </style>
   <script>
-    const backendURL = "https://skr-backend.onrender.com/api";
-    function send(action, payload) {
-      fetch(backendURL, {
+  const backendURL = "https://skr-backend.onrender.com/api";
+
+  async function send(action, payload) {
+    try {
+      const res = await fetch(backendURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action, ...payload })
-      })
-      .then(res => res.json())
-      .then(data => {
-        const user=data;
-        console.log(user);
-      })
-      .catch(err => {
-        document.getElementById("result").innerText = "Error: " + err;
       });
+      const data = await res.json();
+      return data;  // ✅ return the user data
+    } catch (err) {
+      console.error("Error:", err);
+      return null;
     }
-    send("get_profile", { username: "Spare" });
-    if("Spare" in user){
+  }
+
+  // ✅ Call it inside an async IIFE
+  (async () => {
+    const user = await send("get_profile", { username: "Spare" });
+    
+    if (user && "user_data" in user) {
       console.log("true");
-    } else{
+    } else {
       console.log("false");
     }
-  </script>
+  })();
+</script>
 </head>
 <body>
   <h1>SkroyTivra - Social Media Auth</h1>
