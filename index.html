@@ -49,10 +49,10 @@
   (async () => {
     const user = await send("get_profile", { username: "Spare" });
     
-    if (user && "user_data" in user) {
+    if("Spare" in user){
       console.log("true");
-    } else {
-      console.log(user);
+    } else{
+      console.log("false");
     }
   })();
 </script>
