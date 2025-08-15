@@ -28,24 +28,28 @@
     }
   </style>
   <script>
-    const backendURL = "https://skr-backend.onrender.com/api";
-    function send(action, payload) {
-      fetch(backendURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action, ...payload })
-      })
-      .then(res => res.json())
-      .then(data => {
-        const user=data;
-        console.log(user)
-      })
-      .catch(err => {
-        document.getElementById("result").innerText = "Error: " + err;
-      });
-    send("get_profile", { username: "Tez" });
-    }
-  </script>
+  const backendURL = "https://skr-backend.onrender.com/api";
+
+  function send(action, payload) {
+    fetch(backendURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action, ...payload })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const user = data;
+      console.log(user);
+    })
+    .catch(err => {
+      document.getElementById("result").innerText = "Error: " + err;
+    });
+  }
+
+  // Call this on page load if you want
+  send("get_profile", { username: "Tez" });
+</script>
+
 </head>
 <body>
   <h1>SkroyTivra - Social Media Auth</h1>
@@ -81,5 +85,6 @@
   </script>
 </body>
 </html>
+
 
 
